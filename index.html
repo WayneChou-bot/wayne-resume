@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.title">周士驊 Wayne Chou — Product Manager × AI Engineer</title>
+    <meta name="description" data-i18n-attr="content" data-i18n="meta.description" content="周士驊 (Shih-Hua Chou / Wayne) — PMP & CSPO 認證產品經理，10 年電信與半導體跨領域經驗，專注於 AI/RAG/LLM 應用開發。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #bc13fe;
+            --neon-green: #0aff0a;
+            --neon-pink: #ff2a6d;
+            --bg-dark: #050505;
+            --card-bg: rgba(20, 20, 30, 0.6);
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-dark);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .tech-font {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
+        }
+
+        .text-glow-blue { text-shadow: 0 0 10px rgba(0, 243, 255, 0.7); }
+        .text-glow-purple { text-shadow: 0 0 10px rgba(188, 19, 254, 0.7); }
+        .text-glow-green { text-shadow: 0 0 10px rgba(10, 255, 10, 0.7); }
+        .text-glow-pink { text-shadow: 0 0 10px rgba(255, 42, 109, 0.7); }
+
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .tab-btn {
+            position: relative;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+            opacity: 0.5;
+        }
+        .tab-btn:hover { opacity: 1; }
+        .tab-btn.active {
+            opacity: 1;
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+        }
+        .tab-btn[data-target="tab-ai"].active   { border-bottom-color: var(--neon-purple); color: var(--neon-purple); text-shadow: 0 0 8px var(--neon-purple); }
+        .tab-btn[data-target="tab-dev"].active  { border-bottom-color: var(--neon-green);  color: var(--neon-green);  text-shadow: 0 0 8px var(--neon-green); }
+        .tab-btn[data-target="tab-pm"].active   { border-bottom-color: var(--neon-blue);   color: var(--neon-blue);   text-shadow: 0 0 8px var(--neon-blue); }
+
+        .progress-bar { position: relative; overflow: hidden; }
+        .progress-bar::after {
+            content: '';
+            position: absolute; top: 0; left: 0; bottom: 0;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer { 100% { transform: translateX(100%); } }
+
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .project-card:hover {
+            transform: translateY(-6px) scale(1.015);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.25);
+        }
+
+        .cert-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .cert-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active-content { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @keyframes blink { 50% { opacity: 0; } }
+        .animate-blink { animation: blink 1s step-end infinite; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon-blue); }
+
+        .section-num {
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .timeline-dot-active {
+            box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.8);
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(0, 243, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0); }
+        }
+
+        /* Language switcher */
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 999px;
+            overflow: hidden;
+            padding: 2px;
+        }
+        .lang-switch button {
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #9ca3af;
+            transition: all 0.3s;
+            border-radius: 999px;
+            letter-spacing: 0.05em;
+        }
+        .lang-switch button.active {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+        }
+        .lang-switch button:not(.active):hover { color: white; }
+
+        /* EN font tweak — when lang=en, use system-ui for better English readability */
+        html[lang="en"] body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif; }
+
+        @media print {
+            #particles-js, nav, .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .glass-panel { background: white; border: 1px solid #ddd; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-purple-500 selection:text-white">
+
+    <div id="particles-js"></div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b border-gray-800/50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center gap-3">
+            <a href="#home" class="text-xl md:text-2xl font-black tracking-wider text-white flex items-center gap-2 flex-shrink-0">
+                <i class="fas fa-cube text-purple-500 animate-pulse"></i>
+                <span class="tech-font">WAYNE<span class="text-purple-500">.DEV</span></span>
+            </a>
+            <div class="hidden lg:flex space-x-6 text-sm font-bold tracking-widest uppercase text-gray-400">
+                <a href="#about" class="hover:text-white hover:text-glow-blue transition duration-300" data-i18n="nav.about">About</a>
+                <a href="#skills" class="hover:text-white hover:text-glow-green transition duration-300" data-i18n="nav.skills">Skills</a>
+                <a href="#projects" class="hover:text-white hover:text-glow-purple transition duration-300" data-i18n="nav.projects">Projects</a>
+                <a href="#achievements" class="hover:text-white hover:text-glow-pink transition duration-300" data-i18n="nav.achievements">Awards</a>
+                <a href="#education" class="hover:text-white hover:text-glow-blue transition duration-300" data-i18n="nav.education">Education</a>
+                <a href="#experience" class="hover:text-white hover:text-glow-blue transition duration-300" data-i18n="nav.experience">Experience</a>
+                <a href="#certs" class="hover:text-white hover:text-glow-green transition duration-300" data-i18n="nav.certs">Certs</a>
+                <a href="#contact" class="hover:text-white hover:text-glow-pink transition duration-300" data-i18n="nav.contact">Contact</a>
+            </div>
+            <div class="lang-switch flex-shrink-0">
+                <button onclick="setLang('zh')" id="btn-lang-zh" class="active">中文</button>
+                <button onclick="setLang('en')" id="btn-lang-en">EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="home" class="min-h-screen flex flex-col justify-center items-center relative px-4 pt-20">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600 rounded-full blur-[120px] opacity-20 animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600 rounded-full blur-[120px] opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
+
+        <div class="text-center z-10">
+            <div class="relative w-44 h-44 md:w-48 md:h-48 mx-auto mb-8 group">
+                <div class="absolute inset-0 border-2 border-dashed border-cyan-500 rounded-full animate-[spin_10s_linear_infinite] opacity-50"></div>
+                <div class="absolute -inset-2 border border-purple-500 rounded-full animate-[spin_15s_linear_infinite_reverse] opacity-50"></div>
+                <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-gray-800 shadow-[0_0_30px_rgba(0,243,255,0.3)] flex items-center justify-center bg-gradient-to-br from-purple-900 to-cyan-900">
+                    <span class="text-6xl tech-font font-black text-white">W</span>
+                </div>
+                <div class="absolute bottom-1 right-1 bg-gray-900 border border-green-500 text-green-400 text-xs px-3 py-1 rounded-full shadow-lg flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
+                    <span data-i18n="hero.status">OPEN TO WORK</span>
+                </div>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-black text-white mb-2 tracking-tight">
+                WAYNE <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 text-glow-blue">CHOU</span>
+            </h1>
+            <p class="text-gray-500 mono text-sm md:text-base mb-6">周士驊 · Shih-Hua Chou</p>
+
+            <div class="text-xl md:text-2xl text-gray-300 mb-10 mono h-8 flex justify-center items-center gap-2">
+                <span class="text-green-400">&gt;</span>
+                <span id="typed-text"></span><span class="animate-blink text-cyan-400">_</span>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <a href="mailto:gn0418228@gmail.com" class="px-8 py-3 bg-gray-900 border border-cyan-500/50 text-cyan-400 font-bold uppercase tracking-wider rounded transition-all hover:bg-cyan-500 hover:text-black hover:shadow-[0_0_20px_rgba(6,182,212,0.6)]">
+                    <i class="fas fa-envelope mr-2"></i> <span data-i18n="hero.contact">Contact Me</span>
+                </a>
+                <a href="https://www.linkedin.com/in/shih-hua-chou/" target="_blank" rel="noopener" class="px-8 py-3 bg-gray-900 border border-purple-500/50 text-purple-400 font-bold uppercase tracking-wider rounded transition-all hover:bg-purple-500 hover:text-black hover:shadow-[0_0_20px_rgba(168,85,247,0.6)]">
+                    <i class="fab fa-linkedin mr-2"></i> LinkedIn
+                </a>
+                <a href="#projects" class="px-8 py-3 bg-gray-900 border border-green-500/50 text-green-400 font-bold uppercase tracking-wider rounded transition-all hover:bg-green-500 hover:text-black hover:shadow-[0_0_20px_rgba(34,197,94,0.6)]">
+                    <i class="fas fa-rocket mr-2"></i> <span data-i18n="hero.viewProjects">View Projects</span>
+                </a>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
+                <span class="text-xs px-3 py-1 bg-purple-900/30 border border-purple-500/40 text-purple-300 rounded-full mono">PMP</span>
+                <span class="text-xs px-3 py-1 bg-cyan-900/30 border border-cyan-500/40 text-cyan-300 rounded-full mono">CSPO</span>
+                <span class="text-xs px-3 py-1 bg-green-900/30 border border-green-500/40 text-green-300 rounded-full mono">Microsoft AI-900</span>
+                <span class="text-xs px-3 py-1 bg-pink-900/30 border border-pink-500/40 text-pink-300 rounded-full mono" data-i18n="hero.tagYears">10+ Years Experience</span>
+                <span class="text-xs px-3 py-1 bg-yellow-900/30 border border-yellow-500/40 text-yellow-300 rounded-full mono" data-i18n="hero.tagASU">ASU MS Engineering</span>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 flex flex-col items-center gap-2 text-gray-500 opacity-50 animate-bounce">
+            <span class="text-xs tracking-[0.2em] uppercase" data-i18n="hero.scroll">Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="glass-panel p-8 md:p-12 rounded-2xl relative" data-aos="fade-up">
+                <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-cyan-500"></div>
+                <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-purple-500"></div>
+                <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-purple-500"></div>
+                <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-500"></div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6 flex items-center gap-3 text-white">
+                            <span class="section-num">01.</span> <span class="text-glow-purple" data-i18n="about.title">PROFILE</span>
+                        </h2>
+                        <div class="space-y-5 text-gray-300 leading-relaxed">
+                            <p data-i18n="about.p1" data-i18n-html>我是 <strong class="text-white">周士驊 (Wayne)</strong>，目前於 <span class="text-cyan-400">Arizona State University</span> 攻讀工程碩士（GPA <strong>4.00</strong>），同時持有國立中央大學工業管理碩士學位。</p>
+                            <p data-i18n="about.p2" data-i18n-html>擁有 <span class="text-yellow-400">10 年以上</span>跨領域實戰經驗，橫跨 <strong class="text-white">電信</strong>（中華電信）與 <strong class="text-white">半導體製造</strong>（日月光 ASE），具備 <span class="text-purple-400">PMP</span> 與 <span class="text-purple-400">CSPO</span> 雙認證。</p>
+                            <p data-i18n="about.p3" data-i18n-html>我擅長將複雜的商業需求轉化為可交付的技術方案——從千萬級智慧城市專案管理，到獨立開發 <span class="text-green-400">RAG 企業助理</span>、<span class="text-green-400">LSTM 量化交易平台</span>，始終追求商業價值與技術深度的平衡。</p>
+                            <div class="flex flex-wrap gap-3 mt-6">
+                                <div class="px-4 py-2 bg-purple-900/30 border border-purple-500/30 rounded text-sm text-purple-300 mono">
+                                    <i class="fas fa-map-marker-alt mr-2"></i><span data-i18n="about.location">Taoyuan / Arizona</span>
+                                </div>
+                                <div class="px-4 py-2 bg-green-900/30 border border-green-500/30 rounded text-sm text-green-300 mono">
+                                    <i class="fas fa-globe mr-2"></i><span data-i18n="about.remote">Remote Friendly</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-900/50 p-6 rounded border border-gray-700 hover:border-cyan-500 transition duration-300 group">
+                            <div class="text-4xl font-bold text-white mb-1 group-hover:text-cyan-400 transition tech-font">10+</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-wider" data-i18n="about.stat1">Years Exp</div>
+                        </div>
+                        <div class="bg-gray-900/50 p-6 rounded border border-gray-700 hover:border-purple-500 transition duration-300 group">
+                            <div class="text-4xl font-bold text-white mb-1 group-hover:text-purple-400 transition tech-font" data-i18n="about.stat2Value">$1.5億</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-wider" data-i18n="about.stat2">Project Value</div>
+                        </div>
+                        <div class="bg-gray-900/50 p-6 rounded border border-gray-700 hover:border-green-500 transition duration-300 group">
+                            <div class="text-4xl font-bold text-white mb-1 group-hover:text-green-400 transition tech-font">9+</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-wider" data-i18n="about.stat3">Side Projects</div>
+                        </div>
+                        <div class="bg-gray-900/50 p-6 rounded border border-gray-700 hover:border-yellow-500 transition duration-300 group">
+                            <div class="text-4xl font-bold text-white mb-1 group-hover:text-yellow-400 transition tech-font">332x</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-wider" data-i18n="about.stat4">Best ROI</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-24 bg-black/40 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white" data-aos="fade-up">
+                <span class="section-num">02.</span> <span class="text-glow-green" data-i18n="skills.title">TECH STACK</span>
+            </h2>
+            <p class="text-center text-gray-500 mb-12 mono text-sm" data-aos="fade-up" data-aos-delay="50" data-i18n="skills.subtitle">// Skills built across a decade of engineering, PM and AI work</p>
+
+            <div class="flex flex-wrap justify-center mb-12 border-b border-gray-800" data-aos="fade-up" data-aos-delay="100">
+                <button onclick="switchTab('tab-ai')" class="tab-btn active px-6 md:px-8 py-4 text-base md:text-lg font-bold tracking-wider text-gray-400 hover:text-white outline-none" data-target="tab-ai">
+                    <i class="fas fa-brain mr-2"></i> <span data-i18n="skills.tab1">AI &amp; DATA</span>
+                </button>
+                <button onclick="switchTab('tab-dev')" class="tab-btn px-6 md:px-8 py-4 text-base md:text-lg font-bold tracking-wider text-gray-400 hover:text-white outline-none" data-target="tab-dev">
+                    <i class="fas fa-code mr-2"></i> <span data-i18n="skills.tab2">DEVELOPMENT</span>
+                </button>
+                <button onclick="switchTab('tab-pm')" class="tab-btn px-6 md:px-8 py-4 text-base md:text-lg font-bold tracking-wider text-gray-400 hover:text-white outline-none" data-target="tab-pm">
+                    <i class="fas fa-tasks mr-2"></i> <span data-i18n="skills.tab3">MANAGEMENT</span>
+                </button>
+            </div>
+
+            <div class="relative">
+                <!-- AI & DATA -->
+                <div id="tab-ai" class="tab-content active-content">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="glass-panel p-8 rounded-xl border-t-4 border-purple-500">
+                            <h3 class="text-xl text-white mb-6 flex justify-between items-center">
+                                <span><i class="fas fa-robot text-purple-500 mr-2"></i> <span data-i18n="skills.ai.coreTitle">Core AI / ML</span></span>
+                                <span class="text-purple-500 text-xs mono">5 <span data-i18n="skills.skillsLabel">SKILLS</span></span>
+                            </h3>
+                            <div class="space-y-5">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2"><span class="text-gray-300">Python (Pandas, NumPy, Scikit-learn)</span><span class="text-purple-400 mono">95%</span></div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-purple-500 progress-bar" style="width: 95%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2"><span class="text-gray-300">LLM &amp; RAG (LangChain, ChromaDB)</span><span class="text-purple-400 mono">90%</span></div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-purple-500 progress-bar" style="width: 90%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2"><span class="text-gray-300" data-i18n="skills.ai.dl">Deep Learning (LSTM, Sentiment NLP)</span><span class="text-purple-400 mono">80%</span></div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-purple-500 progress-bar" style="width: 80%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2"><span class="text-gray-300">Azure AI / Computer Vision</span><span class="text-purple-400 mono">75%</span></div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-purple-500 progress-bar" style="width: 75%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2"><span class="text-gray-300">Prompt Engineering</span><span class="text-purple-400 mono">90%</span></div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-purple-500 progress-bar" style="width: 90%"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-8 rounded-xl border-t-4 border-cyan-500">
+                            <h3 class="text-xl text-white mb-6 flex justify-between items-center">
+                                <span><i class="fas fa-chart-line text-cyan-500 mr-2"></i> <span data-i18n="skills.ai.dataTitle">Data &amp; Tools</span></span>
+                                <span class="text-cyan-500 text-xs mono">5 <span data-i18n="skills.skillsLabel">SKILLS</span></span>
+                            </h3>
+                            <div class="space-y-5">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2"><span class="text-gray-300" data-i18n="skills.ai.sql">SQL / 資料庫</span><span class="text-cyan-400 mono">85%</span></div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-cyan-500 progress-bar" style="width: 85%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2"><span class="text-gray-300" data-i18n="skills.ai.bi">Power BI 視覺化</span><span class="text-cyan-400 mono">80%</span></div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-cyan-500 progress-bar" style="width: 80%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2"><span class="text-gray-300" data-i18n="skills.ai.jmp">JMP 統計分析</span><span class="text-cyan-400 mono">85%</span></div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-cyan-500 progress-bar" style="width: 85%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2"><span class="text-gray-300">Plotly / Streamlit</span><span class="text-cyan-400 mono">90%</span></div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-cyan-500 progress-bar" style="width: 90%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2"><span class="text-gray-300">Google Analytics</span><span class="text-cyan-400 mono">75%</span></div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-cyan-500 progress-bar" style="width: 75%"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEVELOPMENT -->
+                <div id="tab-dev" class="tab-content">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="glass-panel p-7 rounded-xl border-t-4 border-green-500">
+                            <h3 class="text-lg text-white mb-5"><i class="fas fa-server text-green-500 mr-2"></i> <span data-i18n="skills.dev.backendTitle">Backend &amp; ML</span></h3>
+                            <div class="grid grid-cols-2 gap-2.5">
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-green-500/30 text-green-300 text-xs flex items-center gap-2"><i class="fab fa-python"></i> Python</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-green-500/30 text-green-300 text-xs flex items-center gap-2"><i class="fas fa-bolt"></i> FastAPI</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-green-500/30 text-green-300 text-xs flex items-center gap-2"><i class="fas fa-link"></i> LangChain</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-green-500/30 text-green-300 text-xs flex items-center gap-2"><i class="fas fa-search"></i> RAG</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-green-500/30 text-green-300 text-xs flex items-center gap-2"><i class="fas fa-fire"></i> PyTorch</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-green-500/30 text-green-300 text-xs flex items-center gap-2"><i class="fas fa-brain"></i> TensorFlow</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-green-500/30 text-green-300 text-xs flex items-center gap-2"><i class="fas fa-layer-group"></i> Keras</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-green-500/30 text-green-300 text-xs flex items-center gap-2"><i class="fas fa-database"></i> ChromaDB</div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-7 rounded-xl border-t-4 border-blue-500">
+                            <h3 class="text-lg text-white mb-5"><i class="fas fa-cloud text-blue-500 mr-2"></i> <span data-i18n="skills.dev.cloudTitle">Cloud &amp; Deployment</span></h3>
+                            <div class="grid grid-cols-2 gap-2.5">
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-blue-500/30 text-blue-300 text-xs flex items-center gap-2"><i class="fab fa-aws"></i> AWS</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-blue-500/30 text-blue-300 text-xs flex items-center gap-2"><i class="fab fa-microsoft"></i> Azure</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-blue-500/30 text-blue-300 text-xs flex items-center gap-2"><i class="fas fa-triangle-exclamation"></i> Vercel</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-blue-500/30 text-blue-300 text-xs flex items-center gap-2"><i class="fas fa-terminal"></i> Ngrok</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-blue-500/30 text-blue-300 text-xs flex items-center gap-2"><i class="fab fa-line"></i> LINE API</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-blue-500/30 text-blue-300 text-xs flex items-center gap-2"><i class="fab fa-google"></i> Google APIs</div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-7 rounded-xl border-t-4 border-pink-500">
+                            <h3 class="text-lg text-white mb-5"><i class="fas fa-robot text-pink-500 mr-2"></i> <span data-i18n="skills.dev.agentTitle">AI Agent / IDE</span></h3>
+                            <div class="grid grid-cols-2 gap-2.5">
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-pink-500/30 text-pink-300 text-xs flex items-center gap-2"><i class="fas fa-hat-wizard"></i> OpenClaw</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-pink-500/30 text-pink-300 text-xs flex items-center gap-2"><i class="fas fa-puzzle-piece"></i> Agent Skills</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-pink-500/30 text-pink-300 text-xs flex items-center gap-2"><i class="fas fa-network-wired"></i> n8n</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-pink-500/30 text-pink-300 text-xs flex items-center gap-2"><i class="fas fa-cogs"></i> Make.com</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-pink-500/30 text-pink-300 text-xs flex items-center gap-2"><i class="fas fa-code"></i> Cursor</div>
+                                <div class="bg-gray-900/60 px-3 py-2.5 rounded border border-pink-500/30 text-pink-300 text-xs flex items-center gap-2"><i class="fas fa-rocket"></i> Antigravity</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MANAGEMENT -->
+                <div id="tab-pm" class="tab-content">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="glass-panel p-8 rounded-xl border-t-4 border-cyan-500">
+                            <h3 class="text-xl text-white mb-6"><i class="fas fa-tasks text-cyan-500 mr-2"></i> <span data-i18n="skills.pm.pmTitle">Project / Product</span></h3>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start gap-3"><i class="fas fa-check text-cyan-400 mt-1"></i><span data-i18n="skills.pm.pm1">產品全生命週期管理（MVP 定義、roadmap、發布）</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check text-cyan-400 mt-1"></i><span data-i18n="skills.pm.pm2">政府/企業專案備標、規格撰寫、服務建議書</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check text-cyan-400 mt-1"></i><span data-i18n="skills.pm.pm3">跨部門/跨國協作與利害關係人管理</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check text-cyan-400 mt-1"></i><span data-i18n="skills.pm.pm4">WBS、甘特圖、風險管理</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check text-cyan-400 mt-1"></i><span data-i18n="skills.pm.pm5">SWOT / PEST 分析</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check text-cyan-400 mt-1"></i><span data-i18n="skills.pm.pm6">使用者情境與 UX 規劃</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="glass-panel p-8 rounded-xl border-t-4 border-pink-500">
+                            <h3 class="text-xl text-white mb-6"><i class="fas fa-industry text-pink-500 mr-2"></i> <span data-i18n="skills.pm.domainTitle">Domain Expertise</span></h3>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-start gap-3"><i class="fas fa-bolt text-pink-400 mt-1"></i><span data-i18n="skills.pm.dom1">智慧城市 / IoT（智慧路燈、充電樁、智慧電表）</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-bolt text-pink-400 mt-1"></i><span data-i18n="skills.pm.dom2">半導體設備（封裝測試、製程改善、FMEA）</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-bolt text-pink-400 mt-1"></i><span data-i18n="skills.pm.dom3">能源管理（ISO 50001 內部稽核員）</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-bolt text-pink-400 mt-1"></i><span data-i18n="skills.pm.dom4">雲端平台與資通訊產品架構</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-bolt text-pink-400 mt-1"></i><span data-i18n="skills.pm.dom5">政府採購流程與大型標案</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-bolt text-pink-400 mt-1"></i><span data-i18n="skills.pm.dom6">金融量化交易與策略回測</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white" data-aos="fade-up">
+                <span class="section-num">03.</span> <span class="text-glow-purple" data-i18n="projects.title">FEATURED PROJECTS</span>
+            </h2>
+            <p class="text-center text-gray-500 mb-12 mono text-sm" data-aos="fade-up" data-aos-delay="50" data-i18n="projects.subtitle">// Side projects showcasing AI engineering, automation &amp; data science</p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col" data-aos="fade-up">
+                    <div class="h-44 bg-gray-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-gray-900"></div>
+                        <i class="fas fa-chart-line text-6xl text-purple-500 opacity-80"></i>
+                        <div class="absolute top-3 right-3 text-xs px-2 py-1 bg-purple-500/20 border border-purple-500/50 text-purple-300 rounded mono">v4.5</div>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-cyan-500"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-2" data-i18n="projects.p1.title">AI 量化交易平台</h3>
+                        <p class="text-purple-400 text-xs mono mb-3">LSTM + RAG + Auto-Notify</p>
+                        <p class="text-gray-400 text-sm mb-4 flex-1" data-i18n="projects.p1.desc">多檔台股個股 LSTM 模型整合 RAG 財報檢索與雙層新聞情感分析。結合動態情感加權、技術指標與籌碼面數據，透過 LINE/Telegram 推送交易訊號給付費用戶。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-purple-300 rounded border border-purple-500/30 mono">LSTM</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-purple-300 rounded border border-purple-500/30 mono">RAG</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-purple-300 rounded border border-purple-500/30 mono">LangChain</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col" data-aos="fade-up" data-aos-delay="50">
+                    <div class="h-44 bg-gray-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-br from-green-900/40 to-gray-900"></div>
+                        <i class="fab fa-line text-6xl text-green-500 opacity-80"></i>
+                        <div class="absolute top-3 right-3 text-xs px-2 py-1 bg-green-500/20 border border-green-500/50 text-green-300 rounded mono">Agent</div>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-cyan-500"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-2" data-i18n="projects.p2.title">企業級 RAG LINE 助理</h3>
+                        <p class="text-green-400 text-xs mono mb-3">FastAPI + LangChain + ChromaDB</p>
+                        <p class="text-gray-400 text-sm mb-4 flex-1" data-i18n="projects.p2.desc">多模態 Agent 架構，支援語音雙向對話、即時知識庫上傳更新、Google Calendar/Drive 整合、DALL-E 3 圖文生成，並具備管理後台與權限控管。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-green-300 rounded border border-green-500/30 mono">FastAPI</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-green-300 rounded border border-green-500/30 mono">ChromaDB</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-green-300 rounded border border-green-500/30 mono">DALL-E 3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-44 bg-gray-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/40 to-gray-900"></div>
+                        <i class="fas fa-chart-pie text-6xl text-indigo-500 opacity-80"></i>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-blue-500"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-2" data-i18n="projects.p3.title">智慧股票分析系統</h3>
+                        <p class="text-indigo-400 text-xs mono mb-3">LSTM + NLP + Plotly</p>
+                        <p class="text-gray-400 text-sm mb-4 flex-1" data-i18n="projects.p3.desc">第五版迭代產品。整合動態新聞情感加權、智慧時序對齊、SHAP 模型解釋，並由生成式 AI 輸出結構化投資建議。可自訂預測天數與回溯測試。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-indigo-300 rounded border border-indigo-500/30 mono">SHAP</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-indigo-300 rounded border border-indigo-500/30 mono">Plotly</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-indigo-300 rounded border border-indigo-500/30 mono">Streamlit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col" data-aos="fade-up">
+                    <div class="h-44 bg-gray-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-900/40 to-gray-900"></div>
+                        <i class="fas fa-industry text-6xl text-cyan-500 opacity-80"></i>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-purple-500"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-2" data-i18n="projects.p4.title">智慧製造 Digital Twin</h3>
+                        <p class="text-cyan-400 text-xs mono mb-3">Gemini RAG + 3D + OEE</p>
+                        <p class="text-gray-400 text-sm mb-4 flex-1" data-i18n="projects.p4.desc">3D 建模 + AI 預測性維護（72 小時提前預警），自然語言查詢生產數據將決策時間從 20 分鐘縮短至 30 秒。整合 ERP/MES 資訊流。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-cyan-300 rounded border border-cyan-500/30 mono">Gemini</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-cyan-300 rounded border border-cyan-500/30 mono">RAG</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-cyan-300 rounded border border-cyan-500/30 mono">Three.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col" data-aos="fade-up" data-aos-delay="50">
+                    <div class="h-44 bg-gray-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-gray-900"></div>
+                        <i class="fas fa-eye text-6xl text-blue-500 opacity-80"></i>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-2" data-i18n="projects.p5.title">Azure AI 電腦視覺方案</h3>
+                        <p class="text-blue-400 text-xs mono mb-3">Image Recognition + OCR</p>
+                        <p class="text-gray-400 text-sm mb-4 flex-1" data-i18n="projects.p5.desc">實作 Azure AI Vision 完整方案，涵蓋影像識別、物件偵測、臉部辨識與 OCR 文字擷取，可延伸應用於零售、製造、醫療等領域。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-blue-300 rounded border border-blue-500/30 mono">Azure AI</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-blue-300 rounded border border-blue-500/30 mono">CV</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-blue-300 rounded border border-blue-500/30 mono">OCR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-44 bg-gray-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-900/40 to-gray-900"></div>
+                        <i class="fas fa-network-wired text-6xl text-orange-500 opacity-80"></i>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-red-500"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-2" data-i18n="projects.p6.title">n8n AI Agent 自動化</h3>
+                        <p class="text-orange-400 text-xs mono mb-3">Workflow Automation</p>
+                        <p class="text-gray-400 text-sm mb-4 flex-1" data-i18n="projects.p6.desc">透過 n8n 打造 AI Agent，自動執行郵件搜尋/發送、行事曆登記、Google Sheet 填寫、Docs 文章撰寫等多步驟任務。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-orange-300 rounded border border-orange-500/30 mono">n8n</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-orange-300 rounded border border-orange-500/30 mono">AI Agent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col" data-aos="fade-up">
+                    <div class="h-44 bg-gray-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-br from-pink-900/40 to-gray-900"></div>
+                        <i class="fas fa-heartbeat text-6xl text-pink-500 opacity-80"></i>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 to-purple-500"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-2" data-i18n="projects.p7.title">AI 醫療助理</h3>
+                        <p class="text-pink-400 text-xs mono mb-3">LINE Bot + RAG + Dashboard</p>
+                        <p class="text-gray-400 text-sm mb-4 flex-1" data-i18n="projects.p7.desc">醫療場景 LINE 智慧助理，支援自然語言掛號、互動式預約管理、RAG 衛教問答、自動提醒機制與後台數據儀表板。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-pink-300 rounded border border-pink-500/30 mono">LINE</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-pink-300 rounded border border-pink-500/30 mono">Dashboard</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col" data-aos="fade-up" data-aos-delay="50">
+                    <div class="h-44 bg-gray-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-900/40 to-gray-900"></div>
+                        <i class="fas fa-cogs text-6xl text-yellow-500 opacity-80"></i>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 to-orange-500"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-2" data-i18n="projects.p8.title">Make.com 自動化流程</h3>
+                        <p class="text-yellow-400 text-xs mono mb-3">Meeting Summary + RSS</p>
+                        <p class="text-gray-400 text-sm mb-4 flex-1" data-i18n="projects.p8.desc">會議記錄智慧摘要與分享、RSS 新聞報告自動彙整與發送，全程低代碼整合 OpenAI 與第三方服務。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-yellow-300 rounded border border-yellow-500/30 mono">Make.com</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-yellow-300 rounded border border-yellow-500/30 mono">OpenAI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden project-card flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-44 bg-gray-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-br from-teal-900/40 to-gray-900"></div>
+                        <i class="fas fa-comments text-6xl text-teal-500 opacity-80"></i>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500 to-green-500"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-2" data-i18n="projects.p9.title">LINE Gemini 聊天機器人</h3>
+                        <p class="text-teal-400 text-xs mono mb-3">Google Gemini API</p>
+                        <p class="text-gray-400 text-sm mb-4 flex-1" data-i18n="projects.p9.desc">透過 Python 介接 Google Gemini API，打造高效靈活的 LINE 對話機器人，作為 LLM 介接架構的快速原型。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-teal-300 rounded border border-teal-500/30 mono">Gemini</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-teal-300 rounded border border-teal-500/30 mono">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS & COMMUNITY -->
+    <section id="achievements" class="py-24 bg-black/40 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white" data-aos="fade-up">
+                <span class="section-num">04.</span> <span class="text-glow-pink" data-i18n="ach.title">ACHIEVEMENTS &amp; COMMUNITY</span>
+            </h2>
+            <p class="text-center text-gray-500 mb-12 mono text-sm" data-aos="fade-up" data-aos-delay="50" data-i18n="ach.subtitle">// Recognition, competitions &amp; thought leadership in the global tech community</p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- Datacurve -->
+                <div class="glass-panel p-7 rounded-xl hover:border-yellow-500 transition duration-300 relative overflow-hidden" data-aos="fade-up">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-yellow-500/10 rounded-full blur-3xl"></div>
+                    <div class="relative">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center">
+                                <i class="fas fa-handshake text-yellow-400 text-xl"></i>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <span class="text-xs px-3 py-1 bg-yellow-500/20 border border-yellow-500/50 text-yellow-300 rounded-full mono inline-block w-fit" data-i18n="ach.datacurve.badge">INVITED COLLABORATION</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white mb-1" data-i18n="ach.datacurve.title">Datacurve × Project Eris</h3>
+                        <div class="text-yellow-400 mb-3 text-sm" data-i18n="ach.datacurve.org">Datacurve (YC W24) · Shipd Platform</div>
+                        <p class="text-gray-400 text-sm mb-4" data-i18n="ach.datacurve.desc">受 Datacurve 團隊主動邀請參與 Shipd 平台首個機器學習計畫 Project Eris。起因是團隊在 Kaggle 上注意到我的專案與參賽表現——為全球頂尖基礎模型提供具邏輯深度的「黃金標準」訓練數據，透過 AI Baseline 機制與頂尖工程師競爭解決高階 STEM 難題。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-yellow-300 rounded border border-yellow-500/30 mono">YC W24</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-yellow-300 rounded border border-yellow-500/30 mono">High-Fidelity AI Training</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-yellow-300 rounded border border-yellow-500/30 mono">STEM Reasoning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WorldQuant -->
+                <div class="glass-panel p-7 rounded-xl hover:border-yellow-500 transition duration-300 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-yellow-500/10 rounded-full blur-3xl"></div>
+                    <div class="relative">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center">
+                                <i class="fas fa-trophy text-yellow-400 text-xl"></i>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="text-xs px-2 py-1 bg-orange-500/20 border border-orange-500/50 text-orange-300 rounded mono">🥉</span>
+                                <span class="text-xs px-2 py-1 bg-gray-400/20 border border-gray-400/50 text-gray-300 rounded mono">🥈</span>
+                                <span class="text-xs px-2 py-1 bg-yellow-500/20 border border-yellow-500/50 text-yellow-300 rounded mono font-bold">🥇 GOLD</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white mb-1" data-i18n="ach.wq.title">WorldQuant Challenge · Gold Level</h3>
+                        <div class="text-yellow-400 mb-3 text-sm" data-i18n="ach.wq.org">WorldQuant BRAIN · Research Consultant Qualified</div>
+                        <p class="text-gray-400 text-sm mb-4" data-i18n="ach.wq.desc">從銅牌、銀牌一路晉級至 Gold Level，並獲得 WorldQuant BRAIN Research Consultant 申請資格。策略設計結合台股市場多年實戰經驗，透過模擬法人與外資佈局思維執行策略轉換，經無數次反覆測試與優化而成。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-yellow-300 rounded border border-yellow-500/30 mono">Quant Alpha</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-yellow-300 rounded border border-yellow-500/30 mono">Sharpe 2.26</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-yellow-300 rounded border border-yellow-500/30 mono">Spectacular Alpha</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PMI -->
+                <div class="glass-panel p-7 rounded-xl hover:border-blue-500 transition duration-300 relative overflow-hidden" data-aos="fade-up">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl"></div>
+                    <div class="relative">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center">
+                                <i class="fas fa-globe-asia text-blue-400 text-xl"></i>
+                            </div>
+                            <span class="text-xs px-3 py-1 bg-blue-500/20 border border-blue-500/50 text-blue-300 rounded-full mono" data-i18n="ach.pmi.badge">CONFERENCE</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white mb-1" data-i18n="ach.pmi.title">PMI Asia Pacific Festival 2025</h3>
+                        <div class="text-blue-400 mb-3 text-sm" data-i18n="ach.pmi.org">Project Management Institute · Attendee</div>
+                        <p class="text-gray-400 text-sm mb-4" data-i18n="ach.pmi.desc">參與 PMI 亞太年度盛會，特別受益於 Kathleen Walch 關於「如何執行成功 AI 專案並避免失敗」的主題演講。關鍵啟發：AI 模型會漂移衰退，持續維運是必需而非選項；超個人化容易跨越「詭異谷」破壞信任；導入 AI 前先問「是為了解決問題，還是只為了做 AI？」</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-blue-300 rounded border border-blue-500/30 mono">AI Project Management</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-blue-300 rounded border border-blue-500/30 mono">PMI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Harness Engineering -->
+                <div class="glass-panel p-7 rounded-xl hover:border-purple-500 transition duration-300 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
+                    <div class="relative">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center">
+                                <i class="fas fa-lightbulb text-purple-400 text-xl"></i>
+                            </div>
+                            <span class="text-xs px-3 py-1 bg-purple-500/20 border border-purple-500/50 text-purple-300 rounded-full mono" data-i18n="ach.harness.badge">TECHNICAL INSIGHT</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white mb-1" data-i18n="ach.harness.title">Harness Engineering 實踐</h3>
+                        <div class="text-purple-400 mb-3 text-sm" data-i18n="ach.harness.org">OpenClaw 實戰經驗 · 技術思想分享</div>
+                        <p class="text-gray-400 text-sm mb-4" data-i18n="ach.harness.desc">模型是引擎，穩定的 Agent 需要外部運行系統。三大實踐：(1) 從對話紀錄轉向持久化「狀態管理」(MEMORY.md)；(2) 建立「環境約束」閉環而非長 prompt——修改前確認、修改後自動測試；(3) 角色轉為「環境設計者」，專注拆解任務軌跡與定義工具邊界。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-purple-300 rounded border border-purple-500/30 mono">Agent Architecture</span>
+                            <span class="text-xs px-2 py-1 bg-gray-800 text-purple-300 rounded border border-purple-500/30 mono">LLM Ops</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="py-24 relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white" data-aos="fade-up">
+                <span class="section-num">05.</span> <span class="text-glow-blue" data-i18n="education.title">EDUCATION</span>
+            </h2>
+            <p class="text-center text-gray-500 mb-12 mono text-sm" data-aos="fade-up" data-aos-delay="50" data-i18n="education.subtitle">// Continuous learning across two graduate programs</p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-panel p-7 rounded-xl hover:border-cyan-500 transition duration-300 relative overflow-hidden" data-aos="fade-up">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl"></div>
+                    <div class="relative">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center">
+                                <i class="fas fa-graduation-cap text-cyan-400 text-xl"></i>
+                            </div>
+                            <span class="text-xs px-3 py-1 bg-cyan-500/20 border border-cyan-500/50 text-cyan-300 rounded-full mono flex items-center gap-2">
+                                <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span><span data-i18n="education.inProgress">IN PROGRESS</span>
+                            </span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white mb-1">MS in Engineering</h3>
+                        <div class="text-cyan-400 mb-3">Arizona State University · USA</div>
+                        <div class="flex flex-wrap gap-3 text-sm text-gray-400 mb-4">
+                            <span class="mono"><i class="fas fa-calendar mr-1"></i>2025.03 — 2027.03</span>
+                            <span class="mono"><i class="fas fa-star text-yellow-500 mr-1"></i>GPA 4.00 / 4.33</span>
+                        </div>
+                        <p class="text-gray-400 text-sm" data-i18n="education.asu" data-i18n-html>專注於 AI / ML 與系統工程，已取得 ASU <strong class="text-cyan-300">AI/ML Professional</strong> 與 <strong class="text-cyan-300">Big Data Professional</strong> 兩項研究所層級專業認證。</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-7 rounded-xl hover:border-purple-500 transition duration-300 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl"></div>
+                    <div class="relative">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center">
+                                <i class="fas fa-university text-purple-400 text-xl"></i>
+                            </div>
+                            <span class="text-xs px-3 py-1 bg-purple-500/20 border border-purple-500/50 text-purple-300 rounded-full mono" data-i18n="education.completed">COMPLETED</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white mb-1">MS in Industrial Management</h3>
+                        <div class="text-purple-400 mb-3" data-i18n="education.ncuSchool">國立中央大學 National Central University · Taiwan</div>
+                        <div class="flex flex-wrap gap-3 text-sm text-gray-400 mb-4">
+                            <span class="mono"><i class="fas fa-calendar mr-1"></i>2020.09 — 2022.06</span>
+                            <span class="mono"><i class="fas fa-star text-yellow-500 mr-1"></i>GPA 4.04 / 4.30</span>
+                        </div>
+                        <p class="text-gray-400 text-sm" data-i18n="education.ncu">在職進修工業管理研究所碩士學位，研究方向涵蓋專案管理、製造系統與數據分析，奠定後續轉職產品經理與投入 AI 領域的學術基礎。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-24 bg-black/40 relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white" data-aos="fade-up">
+                <span class="section-num">06.</span> <span class="text-glow-blue" data-i18n="experience.title">EXPERIENCE</span>
+            </h2>
+            <p class="text-center text-gray-500 mb-16 mono text-sm" data-aos="fade-up" data-aos-delay="50" data-i18n="experience.subtitle">// A decade across telecom, semiconductor manufacturing &amp; AI engineering</p>
+
+            <div class="relative pl-8 md:pl-12 border-l-2 border-gray-800 space-y-10">
+
+                <div class="relative" data-aos="fade-left">
+                    <div class="absolute -left-[42px] md:-left-[50px] top-0 w-6 h-6 rounded-full bg-black border-4 border-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.6)]"></div>
+                    <div class="glass-panel p-7 rounded-xl hover:border-blue-500 transition duration-300">
+                        <div class="flex flex-col md:flex-row md:justify-between mb-3 gap-1">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white">Product Manager</h3>
+                                <div class="text-blue-400" data-i18n="experience.cht.company">中華電信 Chunghwa Telecom · 台北</div>
+                            </div>
+                            <span class="text-sm text-gray-400 mono">2022.09 — 2024.09</span>
+                        </div>
+                        <ul class="text-gray-400 text-sm space-y-2 mt-3 list-none">
+                            <li class="flex gap-2"><span class="text-blue-400 mt-1">▸</span><span data-i18n="experience.cht.b1" data-i18n-html>主導智慧路燈與 EV 充電樁產品全生命週期，<strong class="text-white">累計專案規模逾 NT$1.5 億</strong>。</span></li>
+                            <li class="flex gap-2"><span class="text-blue-400 mt-1">▸</span><span data-i18n="experience.cht.b2">協助新北市政府建置智慧共桿，整合環境感測、太陽能與節能 LED（節電 70-80%）。</span></li>
+                            <li class="flex gap-2"><span class="text-blue-400 mt-1">▸</span><span data-i18n="experience.cht.b3">定義充電樁管理平台 MVP，從需求調查、規劃設計到使用者測試完整負責。</span></li>
+                            <li class="flex gap-2"><span class="text-blue-400 mt-1">▸</span><span data-i18n="experience.cht.b4" data-i18n-html>撰寫政府標案規格與服務建議書，獲公司「<span class="text-yellow-400">工作績優</span>」與「<span class="text-yellow-400">行銷績優</span>」嘉獎。</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative" data-aos="fade-left">
+                    <div class="absolute -left-[42px] md:-left-[50px] top-0 w-6 h-6 rounded-full bg-black border-4 border-gray-600"></div>
+                    <div class="glass-panel p-7 rounded-xl hover:border-gray-500 transition duration-300">
+                        <div class="flex flex-col md:flex-row md:justify-between mb-3 gap-1">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-200">Project Engineer · Technology Center</h3>
+                                <div class="text-gray-400" data-i18n="experience.ase1.company">日月光半導體 ASE Group · 中壢</div>
+                            </div>
+                            <span class="text-sm text-gray-500 mono">2021.10 — 2022.08</span>
+                        </div>
+                        <ul class="text-gray-400 text-sm space-y-2 mt-3 list-none">
+                            <li class="flex gap-2"><span class="text-gray-500 mt-1">▸</span><span data-i18n="experience.ase1.b1">運用 JMP 統計分析診斷產線瓶頸並提出改善方案。</span></li>
+                            <li class="flex gap-2"><span class="text-gray-500 mt-1">▸</span><span data-i18n="experience.ase1.b2" data-i18n-html>主導全廠機台改善計畫（加裝集塵偵測），<strong class="text-white">降低報廢風險約 10%</strong>。</span></li>
+                            <li class="flex gap-2"><span class="text-gray-500 mt-1">▸</span><span data-i18n="experience.ase1.b3">推動工廠自動化專案，協助減少人工錯誤約 15%。</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative" data-aos="fade-left">
+                    <div class="absolute -left-[42px] md:-left-[50px] top-0 w-6 h-6 rounded-full bg-black border-4 border-blue-700"></div>
+                    <div class="glass-panel p-7 rounded-xl hover:border-blue-500 transition duration-300">
+                        <div class="flex flex-col md:flex-row md:justify-between mb-3 gap-1">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-200">Project Engineer</h3>
+                                <div class="text-blue-500" data-i18n="experience.cht2.company">中華電信 Chunghwa Telecom · 台北</div>
+                            </div>
+                            <span class="text-sm text-gray-500 mono">2020.07 — 2021.07</span>
+                        </div>
+                        <ul class="text-gray-400 text-sm space-y-2 mt-3 list-none">
+                            <li class="flex gap-2"><span class="text-blue-500 mt-1">▸</span><span data-i18n="experience.cht2.b1" data-i18n-html>負責<strong class="text-white">逾 NT$600 萬</strong>政府採購標案的規劃與執行，確保如質如期交付。</span></li>
+                            <li class="flex gap-2"><span class="text-blue-500 mt-1">▸</span><span data-i18n="experience.cht2.b2">負責「班班有冷氣」全國中小學電力改善計畫的系統架構設計與 App 介面規劃。</span></li>
+                            <li class="flex gap-2"><span class="text-blue-500 mt-1">▸</span><span data-i18n="experience.cht2.b3">負責設備介接整合測試與專案採購流程。</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative" data-aos="fade-left">
+                    <div class="absolute -left-[42px] md:-left-[50px] top-0 w-6 h-6 rounded-full bg-black border-4 border-gray-700"></div>
+                    <div class="glass-panel p-7 rounded-xl hover:border-gray-500 transition duration-300">
+                        <div class="flex flex-col md:flex-row md:justify-between mb-3 gap-1">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-200">Equipment Engineer / Supervisor</h3>
+                                <div class="text-gray-400" data-i18n="experience.ase2.company">日月光半導體 ASE Group · 中壢 (管理 9-12 人)</div>
+                            </div>
+                            <span class="text-sm text-gray-500 mono">2013.12 — 2020.03</span>
+                        </div>
+                        <ul class="text-gray-400 text-sm space-y-2 mt-3 list-none">
+                            <li class="flex gap-2"><span class="text-gray-500 mt-1">▸</span><span data-i18n="experience.ase2.b1">因表現優異晉升設備主任，管理 9-12 人團隊。</span></li>
+                            <li class="flex gap-2"><span class="text-gray-500 mt-1">▸</span><span data-i18n="experience.ase2.b2" data-i18n-html>提出 MARK 對位板改善案，<strong class="text-white">年節省成本約 NT$60 萬，ROI 達 332 倍</strong>。</span></li>
+                            <li class="flex gap-2"><span class="text-gray-500 mt-1">▸</span><span data-i18n="experience.ase2.b3">透過機台優化提升良率約 5%，並以 4.5 年完成業界平均需 6 年的三站點跨站學習。</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certs" class="py-24 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white" data-aos="fade-up">
+                <span class="section-num">07.</span> <span class="text-glow-green" data-i18n="certs.title">CERTIFICATIONS</span>
+            </h2>
+            <p class="text-center text-gray-500 mb-12 mono text-sm" data-aos="fade-up" data-aos-delay="50" data-i18n="certs.subtitle">// Lifelong learning is the only way to stay competitive</p>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="cert-card glass-panel p-6 rounded-xl flex items-start gap-4" data-aos="fade-up">
+                    <div class="text-3xl"><i class="fas fa-medal text-yellow-400"></i></div>
+                    <div>
+                        <h4 class="text-white font-bold mb-1">PMP</h4>
+                        <p class="text-gray-500 text-xs">Project Management Professional · PMI</p>
+                    </div>
+                </div>
+                <div class="cert-card glass-panel p-6 rounded-xl flex items-start gap-4" data-aos="fade-up" data-aos-delay="50">
+                    <div class="text-3xl"><i class="fas fa-medal text-yellow-400"></i></div>
+                    <div>
+                        <h4 class="text-white font-bold mb-1">CSPO</h4>
+                        <p class="text-gray-500 text-xs">Certified Scrum Product Owner · Scrum Alliance</p>
+                    </div>
+                </div>
+                <div class="cert-card glass-panel p-6 rounded-xl flex items-start gap-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-3xl"><i class="fas fa-microchip text-purple-400"></i></div>
+                    <div>
+                        <h4 class="text-white font-bold mb-1">Microsoft AI-900</h4>
+                        <p class="text-gray-500 text-xs">Azure AI Fundamentals · #C586EA-3A416F</p>
+                    </div>
+                </div>
+                <div class="cert-card glass-panel p-6 rounded-xl flex items-start gap-4" data-aos="fade-up">
+                    <div class="text-3xl"><i class="fas fa-graduation-cap text-cyan-400"></i></div>
+                    <div>
+                        <h4 class="text-white font-bold mb-1">AI / ML Professional</h4>
+                        <p class="text-gray-500 text-xs">Arizona State University Graduate Cert.</p>
+                    </div>
+                </div>
+                <div class="cert-card glass-panel p-6 rounded-xl flex items-start gap-4" data-aos="fade-up" data-aos-delay="50">
+                    <div class="text-3xl"><i class="fas fa-database text-green-400"></i></div>
+                    <div>
+                        <h4 class="text-white font-bold mb-1">Big Data Professional</h4>
+                        <p class="text-gray-500 text-xs">Arizona State University Graduate Cert.</p>
+                    </div>
+                </div>
+                <div class="cert-card glass-panel p-6 rounded-xl flex items-start gap-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-3xl"><i class="fab fa-python text-blue-400"></i></div>
+                    <div>
+                        <h4 class="text-white font-bold mb-1">ITS Python</h4>
+                        <p class="text-gray-500 text-xs">Information Technology Specialist · Certiport</p>
+                    </div>
+                </div>
+                <div class="cert-card glass-panel p-6 rounded-xl flex items-start gap-4" data-aos="fade-up">
+                    <div class="text-3xl"><i class="fab fa-google text-red-400"></i></div>
+                    <div>
+                        <h4 class="text-white font-bold mb-1">Gemini Certified Educator</h4>
+                        <p class="text-gray-500 text-xs">Google for Education</p>
+                    </div>
+                </div>
+                <div class="cert-card glass-panel p-6 rounded-xl flex items-start gap-4" data-aos="fade-up" data-aos-delay="50">
+                    <div class="text-3xl"><i class="fab fa-microsoft text-blue-400"></i></div>
+                    <div>
+                        <h4 class="text-white font-bold mb-1">MOS 2019</h4>
+                        <p class="text-gray-500 text-xs">Excel · PowerPoint · Word Associate</p>
+                    </div>
+                </div>
+                <div class="cert-card glass-panel p-6 rounded-xl flex items-start gap-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-3xl"><i class="fas fa-leaf text-green-400"></i></div>
+                    <div>
+                        <h4 class="text-white font-bold mb-1">ISO 50001:2018</h4>
+                        <p class="text-gray-500 text-xs" data-i18n="certs.iso">能源管理系統內部稽核員 · 中衛中心</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-black/40 relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white" data-aos="fade-up">
+                <span class="section-num">08.</span> <span class="text-glow-pink" data-i18n="contact.title">GET IN TOUCH</span>
+            </h2>
+            <p class="text-gray-400 mb-12 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="50" data-i18n="contact.intro" data-i18n-html>
+                目前正在尋找 <span class="text-cyan-400">AI 產品經理</span> / <span class="text-purple-400">AI 工程師</span> / <span class="text-green-400">數據分析師</span> 等職位機會，歡迎隨時聯繫合作或交流。
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-5 mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                <a href="mailto:gn0418228@gmail.com" class="glass-panel p-6 rounded-xl hover:border-cyan-500 transition group flex items-center gap-4 text-left">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500/20 transition">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-gray-500 mono">Email</div>
+                        <div class="text-white font-bold">gn0418228@gmail.com</div>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/shih-hua-chou/" target="_blank" rel="noopener" class="glass-panel p-6 rounded-xl hover:border-purple-500 transition group flex items-center gap-4 text-left">
+                    <div class="w-12 h-12 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:bg-purple-500/20 transition">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-gray-500 mono">LinkedIn</div>
+                        <div class="text-white font-bold">shih-hua-chou</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-10 border-t border-gray-900 relative z-10">
+        <div class="max-w-6xl mx-auto text-center px-6">
+            <div class="flex justify-center space-x-8 mb-6">
+                <a href="https://www.linkedin.com/in/shih-hua-chou/" target="_blank" rel="noopener" class="text-gray-500 hover:text-purple-400 hover:text-glow-purple transition transform hover:scale-125"><i class="fab fa-linkedin fa-lg"></i></a>
+                <a href="mailto:gn0418228@gmail.com" class="text-gray-500 hover:text-cyan-400 hover:text-glow-blue transition transform hover:scale-125"><i class="fas fa-envelope fa-lg"></i></a>
+            </div>
+            <p class="text-gray-600 text-xs mono" data-i18n="footer.copy">© 2026 Wayne Chou (周士驊) · Designed with ⚡ &amp; Cyberpunk Soul</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // ============ I18N DICTIONARY ============
+        const translations = {
+            zh: {
+                'meta.title': '周士驊 Wayne Chou — Product Manager × AI Engineer',
+                'meta.description': '周士驊 (Shih-Hua Chou / Wayne) — PMP & CSPO 認證產品經理，10 年電信與半導體跨領域經驗，專注於 AI/RAG/LLM 應用開發。',
+
+                'nav.about': '關於', 'nav.skills': '技能', 'nav.projects': '專案',
+                'nav.achievements': '成就', 'nav.education': '學歷', 'nav.experience': '經歷', 'nav.certs': '證照', 'nav.contact': '聯繫',
+
+                'hero.status': 'OPEN TO WORK',
+                'hero.contact': '聯繫我',
+                'hero.viewProjects': '查看專案',
+                'hero.tagYears': '10+ 年經驗',
+                'hero.tagASU': 'ASU 工程碩士',
+                'hero.scroll': 'Scroll Down',
+
+                'about.title': 'PROFILE',
+                'about.p1': '我是 <strong class="text-white">周士驊 (Wayne)</strong>，目前於 <span class="text-cyan-400">Arizona State University</span> 攻讀工程碩士（GPA <strong>4.00</strong>），同時持有國立中央大學工業管理碩士學位。',
+                'about.p2': '擁有 <span class="text-yellow-400">10 年以上</span>跨領域實戰經驗，橫跨 <strong class="text-white">電信</strong>（中華電信）與 <strong class="text-white">半導體製造</strong>（日月光 ASE），具備 <span class="text-purple-400">PMP</span> 與 <span class="text-purple-400">CSPO</span> 雙認證。',
+                'about.p3': '我擅長將複雜的商業需求轉化為可交付的技術方案——從千萬級智慧城市專案管理，到獨立開發 <span class="text-green-400">RAG 企業助理</span>、<span class="text-green-400">LSTM 量化交易平台</span>，始終追求商業價值與技術深度的平衡。',
+                'about.location': '桃園 / Arizona',
+                'about.remote': '可遠端工作',
+                'about.stat1': '年資',
+                'about.stat2Value': '$1.5億',
+                'about.stat2': '專案規模',
+                'about.stat3': '個人專案',
+                'about.stat4': '最佳 ROI',
+
+                'skills.title': 'TECH STACK',
+                'skills.subtitle': '// 累積十年橫跨工程、產品與 AI 的技能組合',
+                'skills.tab1': 'AI 與資料', 'skills.tab2': '開發', 'skills.tab3': '管理',
+                'skills.skillsLabel': '技能',
+                'skills.ai.coreTitle': '核心 AI / ML',
+                'skills.ai.dataTitle': '資料與工具',
+                'skills.ai.dl': '深度學習 (LSTM, 情感 NLP)',
+                'skills.ai.sql': 'SQL / 資料庫',
+                'skills.ai.bi': 'Power BI 視覺化',
+                'skills.ai.jmp': 'JMP 統計分析',
+                'skills.dev.backendTitle': '後端與機器學習',
+                'skills.dev.cloudTitle': '雲端與部署',
+                'skills.dev.agentTitle': 'AI Agent / IDE',
+                'skills.pm.pmTitle': '專案 / 產品',
+                'skills.pm.pm1': '產品全生命週期管理（MVP 定義、roadmap、發布）',
+                'skills.pm.pm2': '政府/企業專案備標、規格撰寫、服務建議書',
+                'skills.pm.pm3': '跨部門/跨國協作與利害關係人管理',
+                'skills.pm.pm4': 'WBS、甘特圖、風險管理',
+                'skills.pm.pm5': 'SWOT / PEST 分析',
+                'skills.pm.pm6': '使用者情境與 UX 規劃',
+                'skills.pm.domainTitle': '領域專長',
+                'skills.pm.dom1': '智慧城市 / IoT（智慧路燈、充電樁、智慧電表）',
+                'skills.pm.dom2': '半導體設備（封裝測試、製程改善、FMEA）',
+                'skills.pm.dom3': '能源管理（ISO 50001 內部稽核員）',
+                'skills.pm.dom4': '雲端平台與資通訊產品架構',
+                'skills.pm.dom5': '政府採購流程與大型標案',
+                'skills.pm.dom6': '金融量化交易與策略回測',
+
+                'projects.title': '精選專案',
+                'projects.subtitle': '// 展現 AI 工程、自動化與資料科學實力的個人專案',
+                'projects.p1.title': 'AI 量化交易平台',
+                'projects.p1.desc': '多檔台股個股 LSTM 模型整合 RAG 財報檢索與雙層新聞情感分析。結合動態情感加權、技術指標與籌碼面數據，透過 LINE/Telegram 推送交易訊號給付費用戶。',
+                'projects.p2.title': '企業級 RAG LINE 助理',
+                'projects.p2.desc': '多模態 Agent 架構，支援語音雙向對話、即時知識庫上傳更新、Google Calendar/Drive 整合、DALL-E 3 圖文生成，並具備管理後台與權限控管。',
+                'projects.p3.title': '智慧股票分析系統',
+                'projects.p3.desc': '第五版迭代產品。整合動態新聞情感加權、智慧時序對齊、SHAP 模型解釋，並由生成式 AI 輸出結構化投資建議。可自訂預測天數與回溯測試。',
+                'projects.p4.title': '智慧製造 Digital Twin',
+                'projects.p4.desc': '3D 建模 + AI 預測性維護（72 小時提前預警），自然語言查詢生產數據將決策時間從 20 分鐘縮短至 30 秒。整合 ERP/MES 資訊流。',
+                'projects.p5.title': 'Azure AI 電腦視覺方案',
+                'projects.p5.desc': '實作 Azure AI Vision 完整方案，涵蓋影像識別、物件偵測、臉部辨識與 OCR 文字擷取，可延伸應用於零售、製造、醫療等領域。',
+                'projects.p6.title': 'n8n AI Agent 自動化',
+                'projects.p6.desc': '透過 n8n 打造 AI Agent，自動執行郵件搜尋/發送、行事曆登記、Google Sheet 填寫、Docs 文章撰寫等多步驟任務。',
+                'projects.p7.title': 'AI 醫療助理',
+                'projects.p7.desc': '醫療場景 LINE 智慧助理，支援自然語言掛號、互動式預約管理、RAG 衛教問答、自動提醒機制與後台數據儀表板。',
+                'projects.p8.title': 'Make.com 自動化流程',
+                'projects.p8.desc': '會議記錄智慧摘要與分享、RSS 新聞報告自動彙整與發送，全程低代碼整合 OpenAI 與第三方服務。',
+                'projects.p9.title': 'LINE Gemini 聊天機器人',
+                'projects.p9.desc': '透過 Python 介接 Google Gemini API，打造高效靈活的 LINE 對話機器人，作為 LLM 介接架構的快速原型。',
+
+                'ach.title': '成就與社群貢獻',
+                'ach.subtitle': '// 來自國際社群、競賽與技術分享的認可與貢獻',
+                'ach.datacurve.badge': '主動邀請合作',
+                'ach.datacurve.title': 'Datacurve × Project Eris',
+                'ach.datacurve.org': 'Datacurve (YC W24) · Shipd 平台',
+                'ach.datacurve.desc': '受 Datacurve 團隊主動邀請參與 Shipd 平台首個機器學習計畫 Project Eris。起因是團隊在 Kaggle 上注意到我的專案與參賽表現——為全球頂尖基礎模型提供具邏輯深度的「黃金標準」訓練數據，透過 AI Baseline 機制與頂尖工程師競爭解決高階 STEM 難題。',
+                'ach.wq.title': 'WorldQuant Challenge · Gold Level',
+                'ach.wq.org': 'WorldQuant BRAIN · Research Consultant 資格',
+                'ach.wq.desc': '從銅牌、銀牌一路晉級至 Gold Level，並獲得 WorldQuant BRAIN Research Consultant 申請資格。策略設計結合台股市場多年實戰經驗，透過模擬法人與外資佈局思維執行策略轉換，經無數次反覆測試與優化而成。',
+                'ach.pmi.badge': '國際會議',
+                'ach.pmi.title': 'PMI Asia Pacific Festival 2025',
+                'ach.pmi.org': 'Project Management Institute · 參與者',
+                'ach.pmi.desc': '參與 PMI 亞太年度盛會，特別受益於 Kathleen Walch 關於「如何執行成功 AI 專案並避免失敗」的主題演講。關鍵啟發：AI 模型會漂移衰退，持續維運是必需而非選項；超個人化容易跨越「詭異谷」破壞信任；導入 AI 前先問「是為了解決問題，還是只為了做 AI？」',
+                'ach.harness.badge': '技術洞察分享',
+                'ach.harness.title': 'Harness Engineering 實踐',
+                'ach.harness.org': 'OpenClaw 實戰經驗 · 技術思想分享',
+                'ach.harness.desc': '模型是引擎，穩定的 Agent 需要外部運行系統。三大實踐：(1) 從對話紀錄轉向持久化「狀態管理」(MEMORY.md)；(2) 建立「環境約束」閉環而非長 prompt——修改前確認、修改後自動測試；(3) 角色轉為「環境設計者」，專注拆解任務軌跡與定義工具邊界。',
+
+                'education.title': 'EDUCATION',
+                'education.subtitle': '// 兩段碩士學程的持續學習旅程',
+                'education.inProgress': '在學中',
+                'education.completed': '已取得',
+                'education.ncuSchool': '國立中央大學 National Central University · Taiwan',
+                'education.asu': '專注於 AI / ML 與系統工程，已取得 ASU <strong class="text-cyan-300">AI/ML Professional</strong> 與 <strong class="text-cyan-300">Big Data Professional</strong> 兩項研究所層級專業認證。',
+                'education.ncu': '在職進修工業管理研究所碩士學位，研究方向涵蓋專案管理、製造系統與數據分析，奠定後續轉職產品經理與投入 AI 領域的學術基礎。',
+
+                'experience.title': 'EXPERIENCE',
+                'experience.subtitle': '// 橫跨電信、半導體製造與 AI 工程的十年歷練',
+                'experience.cht.company': '中華電信 Chunghwa Telecom · 台北',
+                'experience.cht.b1': '主導智慧路燈與 EV 充電樁產品全生命週期，<strong class="text-white">累計專案規模逾 NT$1.5 億</strong>。',
+                'experience.cht.b2': '協助新北市政府建置智慧共桿，整合環境感測、太陽能與節能 LED（節電 70-80%）。',
+                'experience.cht.b3': '定義充電樁管理平台 MVP，從需求調查、規劃設計到使用者測試完整負責。',
+                'experience.cht.b4': '撰寫政府標案規格與服務建議書，獲公司「<span class="text-yellow-400">工作績優</span>」與「<span class="text-yellow-400">行銷績優</span>」嘉獎。',
+                'experience.ase1.company': '日月光半導體 ASE Group · 中壢',
+                'experience.ase1.b1': '運用 JMP 統計分析診斷產線瓶頸並提出改善方案。',
+                'experience.ase1.b2': '主導全廠機台改善計畫（加裝集塵偵測），<strong class="text-white">降低報廢風險約 10%</strong>。',
+                'experience.ase1.b3': '推動工廠自動化專案，協助減少人工錯誤約 15%。',
+                'experience.cht2.company': '中華電信 Chunghwa Telecom · 台北',
+                'experience.cht2.b1': '負責<strong class="text-white">逾 NT$600 萬</strong>政府採購標案的規劃與執行，確保如質如期交付。',
+                'experience.cht2.b2': '負責「班班有冷氣」全國中小學電力改善計畫的系統架構設計與 App 介面規劃。',
+                'experience.cht2.b3': '負責設備介接整合測試與專案採購流程。',
+                'experience.ase2.company': '日月光半導體 ASE Group · 中壢 (管理 9-12 人)',
+                'experience.ase2.b1': '因表現優異晉升設備主任，管理 9-12 人團隊。',
+                'experience.ase2.b2': '提出 MARK 對位板改善案，<strong class="text-white">年節省成本約 NT$60 萬，ROI 達 332 倍</strong>。',
+                'experience.ase2.b3': '透過機台優化提升良率約 5%，並以 4.5 年完成業界平均需 6 年的三站點跨站學習。',
+
+                'certs.title': 'CERTIFICATIONS',
+                'certs.subtitle': '// 持續學習是保持競爭力的唯一方法',
+                'certs.iso': '能源管理系統內部稽核員 · 中衛中心',
+
+                'contact.title': 'GET IN TOUCH',
+                'contact.intro': '目前正在尋找 <span class="text-cyan-400">AI 產品經理</span> / <span class="text-purple-400">AI 工程師</span> / <span class="text-green-400">數據分析師</span> 等職位機會，歡迎隨時聯繫合作或交流。',
+
+                'footer.copy': '© 2026 Wayne Chou (周士驊) · Designed with ⚡ & Cyberpunk Soul'
+            },
+            en: {
+                'meta.title': 'Wayne Chou — Product Manager × AI Engineer',
+                'meta.description': 'Shih-Hua (Wayne) Chou — PMP & CSPO certified Product Manager with 10+ years across telecom and semiconductor, focused on AI/RAG/LLM applications.',
+
+                'nav.about': 'About', 'nav.skills': 'Skills', 'nav.projects': 'Projects',
+                'nav.achievements': 'Awards', 'nav.education': 'Education', 'nav.experience': 'Experience', 'nav.certs': 'Certs', 'nav.contact': 'Contact',
+
+                'hero.status': 'OPEN TO WORK',
+                'hero.contact': 'Contact Me',
+                'hero.viewProjects': 'View Projects',
+                'hero.tagYears': '10+ Years Experience',
+                'hero.tagASU': 'ASU MS Engineering',
+                'hero.scroll': 'Scroll Down',
+
+                'about.title': 'PROFILE',
+                'about.p1': "I'm <strong class=\"text-white\">Shih-Hua (Wayne) Chou</strong>, currently pursuing an <span class=\"text-cyan-400\">MS in Engineering at Arizona State University</span> (GPA <strong>4.00</strong>), with a prior MS in Industrial Management from National Central University.",
+                'about.p2': 'Over <span class="text-yellow-400">10 years</span> of hands-on cross-industry experience spanning <strong class="text-white">Telecom</strong> (Chunghwa Telecom) and <strong class="text-white">Semiconductor Manufacturing</strong> (ASE Group), dual-certified as <span class="text-purple-400">PMP</span> and <span class="text-purple-400">CSPO</span>.',
+                'about.p3': 'I specialize in translating complex business needs into shippable technical solutions — from managing multi-million-dollar smart city projects to independently building a <span class="text-green-400">RAG enterprise assistant</span> and an <span class="text-green-400">LSTM-powered quant trading platform</span>. Always balancing business impact with technical depth.',
+                'about.location': 'Taoyuan / Arizona',
+                'about.remote': 'Remote Friendly',
+                'about.stat1': 'Years Exp',
+                'about.stat2Value': '$5M+',
+                'about.stat2': 'Project Value',
+                'about.stat3': 'Side Projects',
+                'about.stat4': 'Best ROI',
+
+                'skills.title': 'TECH STACK',
+                'skills.subtitle': '// Skills built across a decade of engineering, PM and AI work',
+                'skills.tab1': 'AI & DATA', 'skills.tab2': 'DEVELOPMENT', 'skills.tab3': 'MANAGEMENT',
+                'skills.skillsLabel': 'SKILLS',
+                'skills.ai.coreTitle': 'Core AI / ML',
+                'skills.ai.dataTitle': 'Data & Tools',
+                'skills.ai.dl': 'Deep Learning (LSTM, Sentiment NLP)',
+                'skills.ai.sql': 'SQL / Databases',
+                'skills.ai.bi': 'Power BI Visualization',
+                'skills.ai.jmp': 'JMP Statistical Analysis',
+                'skills.dev.backendTitle': 'Backend & ML',
+                'skills.dev.cloudTitle': 'Cloud & Deployment',
+                'skills.dev.agentTitle': 'AI Agent / IDE',
+                'skills.pm.pmTitle': 'Project / Product',
+                'skills.pm.pm1': 'Full product lifecycle (MVP definition, roadmap, release)',
+                'skills.pm.pm2': 'Government/enterprise RFPs, specs, service proposals',
+                'skills.pm.pm3': 'Cross-functional & cross-border collaboration, stakeholder management',
+                'skills.pm.pm4': 'WBS, Gantt charts, risk management',
+                'skills.pm.pm5': 'SWOT / PEST analysis',
+                'skills.pm.pm6': 'User scenarios & UX planning',
+                'skills.pm.domainTitle': 'Domain Expertise',
+                'skills.pm.dom1': 'Smart City / IoT (smart streetlights, EV chargers, smart meters)',
+                'skills.pm.dom2': 'Semiconductor equipment (packaging/test, process improvement, FMEA)',
+                'skills.pm.dom3': 'Energy management (ISO 50001 Internal Auditor)',
+                'skills.pm.dom4': 'Cloud platforms & ICT product architecture',
+                'skills.pm.dom5': 'Government procurement & large-scale tenders',
+                'skills.pm.dom6': 'Quantitative trading & strategy backtesting',
+
+                'projects.title': 'FEATURED PROJECTS',
+                'projects.subtitle': '// Side projects showcasing AI engineering, automation & data science',
+                'projects.p1.title': 'AI Quantitative Trading Platform',
+                'projects.p1.desc': 'LSTM models across multiple Taiwan equities integrated with RAG financial report retrieval and dual-source news sentiment analysis. Combines dynamic sentiment weighting, technical indicators, and institutional flow data. Signals delivered to paying users via LINE/Telegram.',
+                'projects.p2.title': 'Enterprise RAG LINE Assistant',
+                'projects.p2.desc': 'Multi-modal Agent architecture supporting two-way voice dialogue, real-time knowledge base updates, Google Calendar/Drive integration, DALL-E 3 image generation, plus an admin backend with access control.',
+                'projects.p3.title': 'Smart Stock Analysis System',
+                'projects.p3.desc': '5th-generation product integrating dynamic news sentiment weighting, intelligent time-series alignment, SHAP model explainability, and GenAI-produced structured investment recommendations. Configurable forecast horizon & backtesting.',
+                'projects.p4.title': 'Smart Manufacturing Digital Twin',
+                'projects.p4.desc': '3D modeling + AI predictive maintenance (72-hour early warning). Natural-language querying of production data shortens decision time from 20 minutes to 30 seconds. Integrates with ERP/MES systems.',
+                'projects.p5.title': 'Azure AI Computer Vision Solution',
+                'projects.p5.desc': 'End-to-end Azure AI Vision implementation covering image recognition, object detection, face recognition, and OCR text extraction — extensible to retail, manufacturing, and healthcare.',
+                'projects.p6.title': 'n8n AI Agent Automation',
+                'projects.p6.desc': 'AI Agent built on n8n for multi-step workflows: email search/send, calendar booking, Google Sheets data entry, Docs authoring, and more.',
+                'projects.p7.title': 'AI Medical Assistant',
+                'projects.p7.desc': 'LINE-based smart assistant for healthcare: natural-language appointment booking, interactive scheduling, RAG patient education Q&A, auto-reminders, and admin analytics dashboard.',
+                'projects.p8.title': 'Make.com Automation Flows',
+                'projects.p8.desc': 'Intelligent meeting summary & distribution, RSS news digest auto-aggregation and delivery. Fully low-code, integrated with OpenAI and third-party services.',
+                'projects.p9.title': 'LINE Gemini Chatbot',
+                'projects.p9.desc': 'Python-based LINE chatbot powered by Google Gemini API — a fast, flexible prototype demonstrating LLM integration architecture.',
+
+                'ach.title': 'ACHIEVEMENTS & COMMUNITY',
+                'ach.subtitle': '// Recognition, competitions & thought leadership in the global tech community',
+                'ach.datacurve.badge': 'INVITED COLLABORATION',
+                'ach.datacurve.title': 'Datacurve × Project Eris',
+                'ach.datacurve.org': 'Datacurve (YC W24) · Shipd Platform',
+                'ach.datacurve.desc': "Personally recruited by Datacurve's team after they noticed my Kaggle projects and competition track record — invited to join Project Eris, Shipd's first ML initiative. The program produces logic-dense 'Gold Standard' training data for the world's leading foundation models, where top engineers compete to solve high-level STEM problems beyond AI baselines.",
+                'ach.wq.title': 'WorldQuant Challenge · Gold Level',
+                'ach.wq.org': 'WorldQuant BRAIN · Research Consultant Qualified',
+                'ach.wq.desc': "Progressed through Bronze and Silver to reach Gold Level, earning eligibility to apply as a WorldQuant BRAIN Research Consultant. Strategies grounded in years of Taiwan stock market experience — built by modeling institutional and foreign capital flow patterns, refined through rigorous iterative backtesting and optimization.",
+                'ach.pmi.badge': 'CONFERENCE',
+                'ach.pmi.title': 'PMI Asia Pacific Festival 2025',
+                'ach.pmi.org': 'Project Management Institute · Attendee',
+                'ach.pmi.desc': "Attended PMI's flagship APAC event. Key session by Kathleen Walch on running successful AI projects yielded three takeaways: AI models drift and decay — continuous maintenance is mandatory, not optional; hyper-personalization can cross an uncanny valley that destroys user trust; before deploying AI, ask honestly whether you're solving a problem or chasing the hype.",
+                'ach.harness.badge': 'TECHNICAL INSIGHT',
+                'ach.harness.title': 'Harness Engineering in Practice',
+                'ach.harness.org': 'OpenClaw Hands-On · Thought Leadership',
+                'ach.harness.desc': 'The model is the engine; reliable Agents require an external harness. Three practices from OpenClaw work: (1) shift from fragile chat history to persistent state management via MEMORY.md; (2) design environmental constraints with closed feedback loops — verify before modifying, auto-test after; (3) reposition yourself as an environment designer, focusing on trajectory decomposition and tool boundary definition rather than long prompts.',
+
+                'education.title': 'EDUCATION',
+                'education.subtitle': '// Continuous learning across two graduate programs',
+                'education.inProgress': 'IN PROGRESS',
+                'education.completed': 'COMPLETED',
+                'education.ncuSchool': 'National Central University · Taiwan',
+                'education.asu': 'Focused on AI / ML and systems engineering. Earned two graduate-level specializations: <strong class="text-cyan-300">AI/ML Professional</strong> and <strong class="text-cyan-300">Big Data Professional</strong>.',
+                'education.ncu': 'Part-time MS in Industrial Management. Research focus covered project management, manufacturing systems, and data analytics — laying the foundation for my transition into product management and AI.',
+
+                'experience.title': 'EXPERIENCE',
+                'experience.subtitle': '// A decade across telecom, semiconductor manufacturing & AI engineering',
+                'experience.cht.company': 'Chunghwa Telecom · Taipei',
+                'experience.cht.b1': 'Led the full product lifecycle for smart streetlight and EV charging platforms, <strong class="text-white">managing $5M+ in cumulative project value</strong>.',
+                'experience.cht.b2': 'Deployed smart multifunction poles for New Taipei City, integrating environmental sensors, solar power, and energy-saving LEDs (70-80% power reduction).',
+                'experience.cht.b3': 'Defined the MVP for the EV Charging Station Management Platform, owning end-to-end from requirements research and design to user testing.',
+                'experience.cht.b4': 'Authored government RFP specifications and service proposals. Received company commendations for <span class="text-yellow-400">Outstanding Work Performance</span> and <span class="text-yellow-400">Marketing Excellence</span>.',
+                'experience.ase1.company': 'ASE Group · Zhongli',
+                'experience.ase1.b1': 'Deployed JMP statistical analysis to diagnose production bottlenecks and drive process improvements.',
+                'experience.ase1.b2': 'Led the factory-wide equipment improvement plan (dust-collection sensors), <strong class="text-white">reducing scrap risk by ~10%</strong>.',
+                'experience.ase1.b3': 'Drove factory automation initiatives, helping reduce manual errors by ~15%.',
+                'experience.cht2.company': 'Chunghwa Telecom · Taipei',
+                'experience.cht2.b1': 'Managed <strong class="text-white">NT$6M+</strong> government procurement projects with on-time, on-spec delivery and strict regulatory compliance.',
+                'experience.cht2.b2': 'Led system architecture and app UI planning for the "Air Conditioning for Every Classroom" nationwide K-12 power system program.',
+                'experience.cht2.b3': 'Handled equipment integration testing and procurement workflow.',
+                'experience.ase2.company': 'ASE Group · Zhongli (managed team of 9-12)',
+                'experience.ase2.b1': 'Promoted to Equipment Supervisor based on outstanding performance, leading a team of 9-12 engineers.',
+                'experience.ase2.b2': 'Delivered the MARK alignment board improvement, <strong class="text-white">saving ~NT$600K annually at a 332x ROI</strong>.',
+                'experience.ase2.b3': 'Raised production yield by ~5% through equipment optimization; completed cross-station training for 3 stations in 4.5 years vs. industry average of 6 years.',
+
+                'certs.title': 'CERTIFICATIONS',
+                'certs.subtitle': '// Lifelong learning is the only way to stay competitive',
+                'certs.iso': 'Energy Management Internal Auditor · CSD',
+
+                'contact.title': 'GET IN TOUCH',
+                'contact.intro': "I'm actively exploring roles as <span class=\"text-cyan-400\">AI Product Manager</span>, <span class=\"text-purple-400\">AI Engineer</span>, or <span class=\"text-green-400\">Data Analyst</span>. Feel free to reach out for collaboration or a chat.",
+
+                'footer.copy': '© 2026 Wayne Chou (Shih-Hua Chou) · Designed with ⚡ & Cyberpunk Soul'
+            }
+        };
+
+        // ============ I18N ENGINE ============
+        let currentLang = 'zh';
+        let typedInstance = null;
+
+        function applyTranslations(lang) {
+            const dict = translations[lang];
+            document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+
+            // Translate content
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key] === undefined) return;
+
+                const attrName = el.getAttribute('data-i18n-attr');
+                if (attrName) {
+                    el.setAttribute(attrName, dict[key]);
+                } else if (el.hasAttribute('data-i18n-html')) {
+                    el.innerHTML = dict[key];
+                } else {
+                    el.textContent = dict[key];
+                }
+            });
+
+            // Update lang switch button states
+            document.getElementById('btn-lang-zh').classList.toggle('active', lang === 'zh');
+            document.getElementById('btn-lang-en').classList.toggle('active', lang === 'en');
+
+            // Restart typed.js with language-appropriate strings
+            if (typedInstance) typedInstance.destroy();
+            const typedStrings = lang === 'zh'
+                ? ['AI 產品經理', 'RAG / LLM 工程師', 'PMP 認證 PM', '終身學習者']
+                : ['AI Product Manager', 'RAG / LLM Engineer', 'PMP-Certified PM', 'Lifelong Learner'];
+            typedInstance = new Typed('#typed-text', {
+                strings: typedStrings,
+                typeSpeed: 60, backSpeed: 40, backDelay: 2000, loop: true
+            });
+        }
+
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('preferred-lang', lang);
+            applyTranslations(lang);
+        }
+
+        function detectInitialLang() {
+            // 1. Check saved preference
+            const saved = localStorage.getItem('preferred-lang');
+            if (saved === 'zh' || saved === 'en') return saved;
+
+            // 2. Detect browser language
+            const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+            if (browserLang.startsWith('zh')) return 'zh';
+            return 'en';
+        }
+
+        // ============ INIT ============
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+            disable: function() {
+                // Disable AOS if prefers-reduced-motion, avoids hidden-element bugs
+                return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            }
+        });
+
+        // Safety net: force AOS to recalculate after everything loads
+        window.addEventListener('load', () => {
+            if (window.AOS) AOS.refreshHard();
+        });
+
+        // Apply language before anything else
+        currentLang = detectInitialLang();
+        applyTranslations(currentLang);
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active-content'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active-content');
+            document.querySelector(`[data-target="${tabId}"]`).classList.add('active');
+        }
+
+        if (window.particlesJS) {
+            particlesJS("particles-js", {
+                particles: {
+                    number: { value: 50, density: { enable: true, value_area: 800 } },
+                    color: { value: ["#00f3ff", "#bc13fe"] },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: "#4a5568", opacity: 0.2, width: 1 },
+                    move: { enable: true, speed: 1, direction: "none", random: true, out_mode: "out" }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
+                    modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.classList.add('shadow-[0_0_20px_rgba(0,243,255,0.15)]');
+            else nav.classList.remove('shadow-[0_0_20px_rgba(0,243,255,0.15)]');
+        });
+    </script>
+</body>
+</html>
+   
