@@ -3,7 +3,7 @@
 
 # Wayne Chou — Personal Resume Website
 
-> 周士驊 (Shih-Hua Chou) · Product Manager × AI Engineer
+> 周士驊 (Shih-Hua Chou)
 
 我的個人履歷網站，採用 Cyberpunk 風格設計，展示我的工作經歷、技術專長與 AI 相關專案。
 
