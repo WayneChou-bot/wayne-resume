@@ -45,7 +45,14 @@ python -m http.server 8000
 # Node.js
 npx serve .
 ```
+---
 
+## 📄 License
+© 2026 Shih-Hua (Wayne) Chou. All rights reserved.
+
+This project is a personal portfolio. While you are welcome to use the code structure and design as a reference for your own projects, please do not copy or redistribute the personal content (work history, project details, and personal identity) contained within this resume.
+
+---
 ## 📬 Contact
 - **Email**: gn0418228@gmail.com
 - **LinkedIn**: [shih-hua-chou](https://www.linkedin.com/in/shih-hua-chou/)
