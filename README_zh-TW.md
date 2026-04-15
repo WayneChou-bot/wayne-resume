@@ -1,4 +1,4 @@
-[English](./README.md) | **[繁體中文]**
+[English](./README.md) | **繁體中文**
 
 
 # Wayne Chou — Personal Resume Website
