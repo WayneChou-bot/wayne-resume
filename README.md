@@ -53,7 +53,6 @@ npx serve .
 
 - **Email**: gn0418228@gmail.com
 - **LinkedIn**: [shih-hua-chou](https://www.linkedin.com/in/shih-hua-chou/)
-- **Phone**: +886 955-715-506
 
 ---
 
