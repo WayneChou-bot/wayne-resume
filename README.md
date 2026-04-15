@@ -1,61 +1,36 @@
-[English](README.md) | [繁體中文](README_zh-TW.md)
+English | 繁體中文
 
-# Wayne Chou — Personal Resume Website
-
-> 周士驊 (Shih-Hua Chou) · Product Manager × AI Engineer
-
-我的個人履歷網站，採用 Cyberpunk 風格設計，展示我的工作經歷、技術專長與 AI 相關專案。
-
-🔗 **Live Demo**: [[(https://waynechou-resume.vercel.app/)](https://waynechou-resume.vercel.app/)] <!-- 部署後改成你的網址 -->
-
----
-
-## ✨ Features
-
-- 🎨 **Cyberpunk UI** — 霓虹光暈、粒子背景、玻璃擬態卡片
-- 📱 **Responsive Design** — 完整支援桌面、平板、手機
-- ⚡ **Pure Static** — 純 HTML/CSS/JS，零後端依賴，載入快速
-- 🎭 **Interactive Animations** — Typed.js 打字效果、AOS 滾動動畫、particles.js 互動粒子
-- 🖨️ **Print-Friendly** — 內建列印樣式，可直接列印為 PDF
-
-## 🛠 Tech Stack
-
-- **Tailwind CSS** (CDN) — Utility-first styling
-- **Font Awesome 6** — Icons
-- **Google Fonts** — Orbitron / JetBrains Mono / Noto Sans TC
-- **particles.js** — Background particle network
-- **Typed.js** — Typewriter effect
-- **AOS** (Animate On Scroll) — Scroll-triggered animations
-
-## 📂 Structure
-
-```
+Wayne Chou — Personal Resume Website (Cyberpunk Edition)
+Shih-Hua Chou (Wayne) · Product Manager × AI Engineer
+My personal portfolio website, featuring a Cyberpunk-inspired aesthetic to showcase my professional experience, technical expertise, and AI-related projects.
+🔗 Live Demo: https://waynechou-resume.vercel.app/
+✨ Features
+🎨 Cyberpunk UI — Neon glows, dynamic particle backgrounds, and glassmorphism design.
+📱 Responsive Design — Fully optimized for Desktop, Tablet, and Mobile devices.
+⚡ Pure Static — Built with pure HTML/CSS/JS with zero backend dependencies for ultra-fast performance.
+🎭 Interactive Animations — Features Typed.js typewriter effects, AOS (Animate On Scroll), and interactive particles.js networks.
+🖨️ Print-Friendly — Optimized CSS print styles for high-quality PDF exports.
+🛠 Tech Stack
+Tailwind CSS (via CDN) — Utility-first styling.
+Font Awesome 6 — Iconography.
+Google Fonts — Featuring Orbitron, JetBrains Mono, and Noto Sans TC.
+particles.js — Interactive background particle systems.
+Typed.js — Dynamic typewriter effect.
+AOS (Animate On Scroll) — Scroll-triggered animations.
+📂 Project Structure
 wayne-resume/
-├── index.html      # 履歷網頁主檔（單檔即可運作）
+├── index.html      # Main resume entry point (Standalone file)
 └── README.md
-```
-
-## 🚀 Deployment
-
-本專案部署於 [Vercel](https://vercel.com/)，每次 push 到 `main` 分支會自動重新部署。
-
-### 本地預覽
-
-直接用瀏覽器開啟 `index.html` 即可，或使用任意靜態伺服器：
-
-```bash
-# Python
+🚀 Deployment
+This project is hosted on Vercel, with a CI/CD pipeline set up to redeploy automatically upon every push to the main branch.
+Local Preview
+You can open index.html directly in your browser, or run any static server:
+Bash
+Python
 python -m http.server 8000
-
-# Node.js
+Node.js
 npx serve .
-```
-
-## 📬 Contact
-
-- **Email**: gn0418228@gmail.com
-- **LinkedIn**: [shih-hua-chou](https://www.linkedin.com/in/shih-hua-chou/)
-
----
-
-© 2026 Wayne Chou. Designed with ⚡ & Cyberpunk Soul.
+📬 Contact
+Email: gn0418228@gmail.com
+LinkedIn: shih-hua-chou
+© 2026 Wayne Chou. Designed with ⚡ & a Cyberpunk Soul.
