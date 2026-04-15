@@ -2,7 +2,7 @@
 
 # Wayne Chou — Personal Resume Website (Cyberpunk Edition)
 
-> **Shih-Hua Chou (Wayne)** · Product Manager × AI Engineer
+> **Shih-Hua Chou (Wayne)**
 
 My personal portfolio website, featuring a **Cyberpunk-inspired** aesthetic to showcase my professional experience, technical expertise, and AI-related projects.
 
