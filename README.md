@@ -29,6 +29,23 @@ wayne-resume/
 └── README.md
 ```
 
+## 🚀 Deployment
+
+This project is hosted on Vercel, with a CI/CD pipeline set up to redeploy automatically upon every push to the main branch.
+
+
+### Local Preview
+
+You can open index.html directly in your browser, or run any static server:
+
+```bash
+# Python
+python -m http.server 8000
+
+# Node.js
+npx serve .
+```
+
 ## 📬 Contact
 - **Email**: gn0418228@gmail.com
 - **LinkedIn**: [shih-hua-chou](https://www.linkedin.com/in/shih-hua-chou/)
