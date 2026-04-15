@@ -23,9 +23,11 @@ My personal portfolio website, featuring a **Cyberpunk-inspired** aesthetic to s
 - **particles.js** / **Typed.js** / **AOS**
 
 ## 📂 Structure
+```
 wayne-resume/
 ├── index.html      # Main resume entry point
 └── README.md
+```
 
 ## 📬 Contact
 - **Email**: gn0418228@gmail.com
